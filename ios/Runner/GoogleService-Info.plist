@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>519332638645-09flqf49mj2k4fp72393gphs1t7ihjsc.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.519332638645-09flqf49mj2k4fp72393gphs1t7ihjsc</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAdaA9swqTUF5CYh_QQGbRuB3R5HMUNhU0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>519332638645</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.avSpanishAdmin</string>
+	<key>PROJECT_ID</key>
+	<string>av-spanish-academy-93d20</string>
+	<key>STORAGE_BUCKET</key>
+	<string>av-spanish-academy-93d20.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:519332638645:ios:996d5b6dfe047fc68473fc</string>
+</dict>
+</plist>
