@@ -79,7 +79,7 @@ class _AddTFQuizScreenState extends State<AddTFQuizScreen> {
                     final question = quizQuestions[index];
 
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(bottom: 8),
                       child: AppCardWidget(
                         children: [
                           Padding(

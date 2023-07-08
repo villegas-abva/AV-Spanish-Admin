@@ -104,7 +104,7 @@ class _AddTFQuizQuestionsModalState extends State<AddTFQuizQuestionsModal> {
               alignment: Alignment.center,
               child: AppText.button1('Add question'),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -11,11 +11,11 @@ class QuizRepository {
 
   // ***************** True False Quiz functions *****************
 
-  /// Adds a true / false quiz into the true / false quiz collection.
-  Future<void> addTrueFalseQuiz(TFQuiz quiz) async {
+  /// Adds a [TFQuiz] into the TF quizzes collection.
+  Future<void> addTFQuiz(TFQuiz quiz) async {
     // step 1: Add quiz main fields
     _tfQuizRef
-        .doc(quiz.title)
+        .doc(quiz.id)
         .withConverter<TFQuiz>(
           fromFirestore: (snapshot, _) => TFQuiz.fromJson(snapshot.data()!),
           toFirestore: (model, _) => model.toJson(),
@@ -33,7 +33,7 @@ class QuizRepository {
     // step 2: Add quiz questions
     for (var question in quiz.questions) {
       _tfQuizRef
-          .doc(quiz.title)
+          .doc(quiz.id)
           .collection('questions')
           .doc('question ${question.questionNumber}')
           .withConverter<TFQuestion>(
@@ -52,6 +52,38 @@ class QuizRepository {
             endTimeMinute: question.endTimeMinute,
           ));
     }
+  }
+
+  /// Edits a [TFQuiz]'fields from the TF quizzes collection.
+  ///
+  /// Note: This DOES NOT update the quiz's questions.
+  Future<void> editTFQuiz(TFQuiz quiz) async {
+    _tfQuizRef
+        .doc(quiz.id)
+        .withConverter<TFQuiz>(
+          fromFirestore: (snapshot, _) => TFQuiz.fromJson(snapshot.data()!),
+          toFirestore: (model, _) => model.toJson(),
+        )
+        .set(
+          TFQuiz(
+            title: quiz.title,
+            url: quiz.url,
+            id: quiz.id,
+            questions: quiz.questions,
+            numberOfQuestions: quiz.numberOfQuestions,
+          ),
+        );
+  }
+
+  /// Deletes a [TFQuiz] from the TF quizzes collection.
+  Future<void> deleteTFQuiz(TFQuiz quiz) async {
+    _tfQuizRef
+        .doc(quiz.id)
+        .withConverter<TFQuiz>(
+          fromFirestore: (snapshot, _) => TFQuiz.fromJson(snapshot.data()!),
+          toFirestore: (model, _) => model.toJson(),
+        )
+        .delete();
   }
 
   /// Gets a List of True False quizzes, just once (no real time).

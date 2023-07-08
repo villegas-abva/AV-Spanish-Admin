@@ -16,15 +16,19 @@ class AddTFQuizEvent extends IndividualTFQuizEvent {
 }
 
 class DeleteTFQuizEvent extends IndividualTFQuizEvent {
-  const DeleteTFQuizEvent();
+  const DeleteTFQuizEvent(this.quiz);
+
+  final TFQuiz quiz;
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [quiz];
 }
 
 class EditTFQuizEvent extends IndividualTFQuizEvent {
-  const EditTFQuizEvent();
+  const EditTFQuizEvent(this.quiz);
+
+  final TFQuiz quiz;
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [quiz];
 }
