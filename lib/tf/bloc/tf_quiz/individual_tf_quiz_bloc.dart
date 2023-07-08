@@ -13,18 +13,22 @@ class IndividualTFQuizBloc
     this.quizRepository,
   ) : super(InitialTFQuizState()) {
     on<AddTFQuizEvent>(
-      _addTrueFalseQuiz,
+      _addQuiz,
+      transformer: droppable(),
+    );
+    on<EditTFQuizEvent>(
+      _editQuiz,
       transformer: droppable(),
     );
     on<DeleteTFQuizEvent>(
-      _deleteTrueFalseQuiz,
+      _deleteQuiz,
       transformer: droppable(),
     );
   }
 
   final QuizRepository quizRepository;
 
-  Future<void> _addTrueFalseQuiz(
+  Future<void> _addQuiz(
     AddTFQuizEvent event,
     Emitter<IndividualTFQuizState> emit,
   ) async {
@@ -41,7 +45,24 @@ class IndividualTFQuizBloc
     }
   }
 
-  Future<void> _deleteTrueFalseQuiz(
+  Future<void> _editQuiz(
+    EditTFQuizEvent event,
+    Emitter<IndividualTFQuizState> emit,
+  ) async {
+    emit(const LoadingTFQuizState());
+    try {
+      quizRepository.editTFQuiz(event.quiz);
+      emit(
+        const SuccessTFQuizState(),
+      );
+    } catch (e) {
+      emit(
+        const ErrorTFQuizState(),
+      );
+    }
+  }
+
+  Future<void> _deleteQuiz(
     DeleteTFQuizEvent event,
     Emitter<IndividualTFQuizState> emit,
   ) async {

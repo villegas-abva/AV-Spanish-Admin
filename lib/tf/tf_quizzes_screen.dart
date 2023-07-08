@@ -1,6 +1,7 @@
+import 'package:av_spanish_admin/services/repository/quiz_repository.dart';
 import 'package:av_spanish_admin/tf/bloc/tf_quiz/individual_tf_quiz_bloc.dart';
 import 'package:av_spanish_admin/tf/bloc/tf_quiz/tf_quizzes_bloc.dart';
-import 'package:av_spanish_admin/tf/widgets/tf_quiz_actions_dialog.dart';
+import 'package:av_spanish_admin/tf/edit_tf_quiz/edit_tf_quiz_screen.dart';
 import 'package:av_spanish_admin/theme/theme.dart';
 import 'package:av_spanish_admin/widgets/app_card_widget.dart';
 import 'package:flutter/material.dart';
@@ -47,18 +48,42 @@ class TFQuizzesScreen extends StatelessWidget {
                                 padding: const EdgeInsets.only(bottom: 8),
                                 child: GestureDetector(
                                   onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (_) => Center(
-                                        child: TFQuizActionsDialog(
-                                            quiz: quiz,
-                                            onDeleteQuiz: () {
-                                              context
-                                                  .read<IndividualTFQuizBloc>()
-                                                  .add(DeleteTFQuizEvent(quiz));
-                                            }),
-                                      ),
-                                    );
+                                    //? Why need the BlocProvider.value ???
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                BlocProvider.value(
+                                                    value: IndividualTFQuizBloc(
+                                                        QuizRepository()),
+                                                    child: EditTFQuizScreen(
+                                                        quiz: quiz))));
+                                    // showDialog(
+                                    //   context: context,
+                                    //   builder: (_) => Center(
+                                    //     child: TFQuizActionsDialog(
+                                    //         quiz: quiz,
+                                    //         onDeleteQuiz: () {
+                                    //           context
+                                    //               .read<IndividualTFQuizBloc>()
+                                    //               .add(DeleteTFQuizEvent(quiz));
+                                    //         },
+                                    //         onNavigateToEditQuizScreen: () {
+                                    //           Navigator.push(
+                                    //             context,
+                                    //             MaterialPageRoute(
+                                    //               builder: (context) =>
+                                    //                   BlocProvider.value(
+                                    //                 value: context.read<
+                                    //                     IndividualTFQuizBloc>(),
+                                    //                 child: EditTFQuizScreen(
+                                    //                     quiz: quiz),
+                                    //               ),
+                                    //             ),
+                                    //           );
+                                    //         }),
+                                    //   ),
+                                    // );
                                   },
                                   child: AppCardWidget(
                                     children: [

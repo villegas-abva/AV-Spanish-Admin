@@ -54,6 +54,27 @@ class QuizRepository {
     }
   }
 
+  /// Edits a [TFQuiz]'fields from the TF quizzes collection.
+  ///
+  /// Note: This DOES NOT update the quiz's questions.
+  Future<void> editTFQuiz(TFQuiz quiz) async {
+    _tfQuizRef
+        .doc(quiz.id)
+        .withConverter<TFQuiz>(
+          fromFirestore: (snapshot, _) => TFQuiz.fromJson(snapshot.data()!),
+          toFirestore: (model, _) => model.toJson(),
+        )
+        .set(
+          TFQuiz(
+            title: quiz.title,
+            url: quiz.url,
+            id: quiz.id,
+            questions: quiz.questions,
+            numberOfQuestions: quiz.numberOfQuestions,
+          ),
+        );
+  }
+
   /// Deletes a [TFQuiz] from the TF quizzes collection.
   Future<void> deleteTFQuiz(TFQuiz quiz) async {
     _tfQuizRef

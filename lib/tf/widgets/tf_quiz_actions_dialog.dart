@@ -7,11 +7,13 @@ class TFQuizActionsDialog extends StatelessWidget {
   const TFQuizActionsDialog({
     required this.quiz,
     required this.onDeleteQuiz,
+    required this.onNavigateToEditQuizScreen,
     super.key,
   });
 
   final TFQuiz quiz;
   final void Function() onDeleteQuiz;
+  final void Function() onNavigateToEditQuizScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -29,16 +31,18 @@ class TFQuizActionsDialog extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 8),
-            child: AppText.body1('Edit quiz fields'),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8),
             child: GestureDetector(
-              // TODO: navigate to edit quiz screen
-              onTap: () {},
-              child: const AppDivider(
-                color: Colors.black,
-              ),
+              onTap: () {
+                // Navigator.pop(context);
+                onNavigateToEditQuizScreen();
+              },
+              child: AppText.body1('Edit quiz fields'),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(bottom: 8),
+            child: AppDivider(
+              color: Colors.black,
             ),
           ),
           GestureDetector(
