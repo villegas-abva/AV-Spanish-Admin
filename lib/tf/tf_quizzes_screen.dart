@@ -1,4 +1,6 @@
+import 'package:av_spanish_admin/tf/bloc/tf_quiz/individual_tf_quiz_bloc.dart';
 import 'package:av_spanish_admin/tf/bloc/tf_quiz/tf_quizzes_bloc.dart';
+import 'package:av_spanish_admin/tf/widgets/tf_quiz_actions_dialog.dart';
 import 'package:av_spanish_admin/theme/theme.dart';
 import 'package:av_spanish_admin/widgets/app_card_widget.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +13,7 @@ class TFQuizzesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit TF Quiz'),
+        title: const Text('TF Quizzes Screen'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -43,18 +45,35 @@ class TFQuizzesScreen extends StatelessWidget {
 
                               return Padding(
                                 padding: const EdgeInsets.only(bottom: 8),
-                                child: AppCardWidget(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 8),
-                                      child: AppText.body1(
-                                        quiz.title,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (_) => Center(
+                                        child: TFQuizActionsDialog(
+                                            quiz: quiz,
+                                            onDeleteQuiz: () {
+                                              context
+                                                  .read<IndividualTFQuizBloc>()
+                                                  .add(DeleteTFQuizEvent(quiz));
+                                            }),
                                       ),
-                                    ),
-                                    AppText.body1(
-                                      quiz.url,
-                                    ),
-                                  ],
+                                    );
+                                  },
+                                  child: AppCardWidget(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 8),
+                                        child: AppText.body1(
+                                          quiz.title,
+                                        ),
+                                      ),
+                                      AppText.body1(
+                                        quiz.url,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               );
                             },
