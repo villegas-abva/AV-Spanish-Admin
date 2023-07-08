@@ -79,4 +79,19 @@ class TFQuiz {
       numberOfQuestions: data.numberOfQuestions,
     );
   }
+
+  TFQuiz copyWith({
+    String? id,
+    String? title,
+    String? url,
+    int? numberOfQuestions,
+  }) {
+    return TFQuiz(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      url: url ?? this.url,
+      questions: questions,
+      numberOfQuestions: numberOfQuestions ?? this.numberOfQuestions,
+    );
+  }
 }
