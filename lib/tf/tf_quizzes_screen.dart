@@ -50,40 +50,16 @@ class TFQuizzesScreen extends StatelessWidget {
                                   onTap: () {
                                     //? Why need the BlocProvider.value ???
                                     Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                BlocProvider.value(
-                                                    value: IndividualTFQuizBloc(
-                                                        QuizRepository()),
-                                                    child: EditTFQuizScreen(
-                                                        quiz: quiz))));
-                                    // showDialog(
-                                    //   context: context,
-                                    //   builder: (_) => Center(
-                                    //     child: TFQuizActionsDialog(
-                                    //         quiz: quiz,
-                                    //         onDeleteQuiz: () {
-                                    //           context
-                                    //               .read<IndividualTFQuizBloc>()
-                                    //               .add(DeleteTFQuizEvent(quiz));
-                                    //         },
-                                    //         onNavigateToEditQuizScreen: () {
-                                    //           Navigator.push(
-                                    //             context,
-                                    //             MaterialPageRoute(
-                                    //               builder: (context) =>
-                                    //                   BlocProvider.value(
-                                    //                 value: context.read<
-                                    //                     IndividualTFQuizBloc>(),
-                                    //                 child: EditTFQuizScreen(
-                                    //                     quiz: quiz),
-                                    //               ),
-                                    //             ),
-                                    //           );
-                                    //         }),
-                                    //   ),
-                                    // );
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            BlocProvider.value(
+                                          value: IndividualTFQuizBloc(
+                                              QuizRepository()),
+                                          child: EditTFQuizScreen(quiz: quiz),
+                                        ),
+                                      ),
+                                    );
                                   },
                                   child: AppCardWidget(
                                     children: [
