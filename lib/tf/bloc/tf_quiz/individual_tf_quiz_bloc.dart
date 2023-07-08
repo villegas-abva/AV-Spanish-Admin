@@ -9,11 +9,15 @@ part 'individual_tf_quiz_state.dart';
 
 class IndividualTFQuizBloc
     extends Bloc<IndividualTFQuizEvent, IndividualTFQuizState> {
-  IndividualTFQuizBloc({
-    required this.quizRepository,
-  }) : super(InitialTFQuizState()) {
+  IndividualTFQuizBloc(
+    this.quizRepository,
+  ) : super(InitialTFQuizState()) {
     on<AddTFQuizEvent>(
       _addTrueFalseQuiz,
+      transformer: droppable(),
+    );
+    on<DeleteTFQuizEvent>(
+      _deleteTrueFalseQuiz,
       transformer: droppable(),
     );
   }
@@ -26,7 +30,24 @@ class IndividualTFQuizBloc
   ) async {
     emit(const LoadingTFQuizState());
     try {
-      quizRepository.addTrueFalseQuiz(event.quiz);
+      quizRepository.addTFQuiz(event.quiz);
+      emit(
+        const SuccessTFQuizState(),
+      );
+    } catch (e) {
+      emit(
+        const ErrorTFQuizState(),
+      );
+    }
+  }
+
+  Future<void> _deleteTrueFalseQuiz(
+    DeleteTFQuizEvent event,
+    Emitter<IndividualTFQuizState> emit,
+  ) async {
+    emit(const LoadingTFQuizState());
+    try {
+      quizRepository.deleteTFQuiz(event.quiz);
       emit(
         const SuccessTFQuizState(),
       );
