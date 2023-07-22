@@ -1,5 +1,4 @@
 import 'package:av_spanish_admin/theme/theme.dart';
-import 'package:av_spanish_admin/widgets/app_divider.dart';
 import 'package:flutter/material.dart';
 
 class EditTFQuizField extends StatelessWidget {
@@ -11,6 +10,7 @@ class EditTFQuizField extends StatelessWidget {
 
   final String fieldName;
   final TextEditingController controller;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -27,13 +27,7 @@ class EditTFQuizField extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 8),
           child: TextFormField(
             controller: controller,
-            decoration: InputDecoration.collapsed(
-              hintText: controller.text,
-            ),
           ),
-        ),
-        const AppDivider(
-          color: Colors.black,
         ),
       ],
     );

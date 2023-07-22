@@ -10,16 +10,16 @@ part 'individual_tf_question_state.dart';
 class IndividualTFQuestionBloc
     extends Bloc<IndividualTFQuestionEvent, IndividualTFQuestionState> {
   IndividualTFQuestionBloc(this.repo) : super(InitialTFQuestionState()) {
-    on<FetchQuestion>(_fetchTFQuestions);
-    on<AddQuestion>(_addQuestion);
-    on<EditQuestion>(_editQuestion);
-    on<DeleteQuestion>(_deleteQuestion);
+    on<FetchQuestionEvent>(_fetchTFQuestions);
+    on<AddQuestionEvent>(_addQuestion);
+    on<EditQuestionEvent>(_editQuestion);
+    on<DeleteQuestionEvent>(_deleteQuestion);
   }
 
   final QuizRepository repo;
 
   Future<void> _fetchTFQuestions(
-    FetchQuestion event,
+    FetchQuestionEvent event,
     Emitter<IndividualTFQuestionState> emit,
   ) async {
     emit(LoadingTFQuestionState());
@@ -33,7 +33,7 @@ class IndividualTFQuestionBloc
 
   // TODO: implement
   Future<void> _addQuestion(
-    AddQuestion event,
+    AddQuestionEvent event,
     Emitter<IndividualTFQuestionState> emit,
   ) async {
     emit(LoadingTFQuestionState());
@@ -49,11 +49,11 @@ class IndividualTFQuestionBloc
   }
 
   Future<void> _editQuestion(
-    EditQuestion event,
+    EditQuestionEvent event,
     Emitter<IndividualTFQuestionState> emit,
   ) async {
     try {
-      await repo.updateTFQuestion(
+      await repo.editTFQuestion(
         quizId: event.quizId,
         question: event.question,
       );
@@ -64,7 +64,7 @@ class IndividualTFQuestionBloc
   }
 
   Future<void> _deleteQuestion(
-    DeleteQuestion event,
+    DeleteQuestionEvent event,
     Emitter<IndividualTFQuestionState> emit,
   ) async {
     try {

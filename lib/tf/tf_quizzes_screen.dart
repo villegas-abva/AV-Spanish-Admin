@@ -1,4 +1,6 @@
 import 'package:av_spanish_admin/services/repository/quiz_repository.dart';
+import 'package:av_spanish_admin/tf/bloc/tf_question/individual_tf_question_bloc.dart';
+import 'package:av_spanish_admin/tf/bloc/tf_question/tf_questions_bloc.dart';
 import 'package:av_spanish_admin/tf/bloc/tf_quiz/individual_tf_quiz_bloc.dart';
 import 'package:av_spanish_admin/tf/bloc/tf_quiz/tf_quizzes_bloc.dart';
 import 'package:av_spanish_admin/tf/edit_tf_quiz/edit_tf_quiz_screen.dart';
@@ -56,7 +58,25 @@ class TFQuizzesScreen extends StatelessWidget {
                                             BlocProvider.value(
                                           value: IndividualTFQuizBloc(
                                               QuizRepository()),
-                                          child: EditTFQuizScreen(quiz: quiz),
+                                          child: MultiBlocProvider(
+                                            providers: [
+                                              BlocProvider(
+                                                create: (context) =>
+                                                    TFQuestionsBloc(
+                                                        QuizRepository())
+                                                      ..add(
+                                                        FetchQuestions(
+                                                            quizId: quiz.id),
+                                                      ),
+                                              ),
+                                              BlocProvider(
+                                                  create: (context) =>
+                                                      IndividualTFQuestionBloc(
+                                                        QuizRepository(),
+                                                      )),
+                                            ],
+                                            child: EditTFQuizScreen(quiz: quiz),
+                                          ),
                                         ),
                                       ),
                                     );
