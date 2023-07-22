@@ -8,8 +8,8 @@ abstract class IndividualTFQuestionEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class FetchQuestion extends IndividualTFQuestionEvent {
-  const FetchQuestion({required this.quizId});
+class FetchQuestionEvent extends IndividualTFQuestionEvent {
+  const FetchQuestionEvent({required this.quizId});
 
   final String quizId;
 
@@ -17,8 +17,8 @@ class FetchQuestion extends IndividualTFQuestionEvent {
   List<Object?> get props => [quizId];
 }
 
-class AddQuestion extends IndividualTFQuestionEvent {
-  const AddQuestion({
+class AddQuestionEvent extends IndividualTFQuestionEvent {
+  const AddQuestionEvent({
     required this.question,
     required this.quizId,
   });
@@ -33,8 +33,8 @@ class AddQuestion extends IndividualTFQuestionEvent {
       ];
 }
 
-class EditQuestion extends IndividualTFQuestionEvent {
-  const EditQuestion({
+class EditQuestionEvent extends IndividualTFQuestionEvent {
+  const EditQuestionEvent({
     required this.question,
     required this.quizId,
   });
@@ -49,8 +49,8 @@ class EditQuestion extends IndividualTFQuestionEvent {
       ];
 }
 
-class DeleteQuestion extends IndividualTFQuestionEvent {
-  const DeleteQuestion({
+class DeleteQuestionEvent extends IndividualTFQuestionEvent {
+  const DeleteQuestionEvent({
     required this.quizId,
     required this.question,
   });

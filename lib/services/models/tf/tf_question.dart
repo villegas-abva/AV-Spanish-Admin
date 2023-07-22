@@ -68,6 +68,32 @@ class TFQuestion {
     );
   }
 
+  factory TFQuestion.questionFromSnapshot(Map<String, dynamic> document) {
+    final data = document;
+
+    return TFQuestion(
+      id: data['id'],
+      questionNumber: data['questionNumber'],
+      question: data['question'],
+      answer: data['answer'],
+      startTimeSecond: data['startTimeSecond'],
+      startTimeMinute: data['startTimeMinute'],
+      endTimeSecond: data['endTimeSecond'],
+      endTimeMinute: data['endTimeMinute'],
+    );
+  }
+
+  Map<String, Object?> questionToJason() => {
+        'id': id,
+        'questionNumber': questionNumber,
+        'question': question,
+        'answer': answer,
+        'startTimeSecond': startTimeSecond,
+        'startTimeMinute': startTimeMinute,
+        'endTimeSecond': endTimeSecond,
+        'endTimeMinute': endTimeMinute,
+      };
+
   /// Converts the [Map] that comes from Firestore into this model.
   /// Firestore works with [Map]s by default.
   factory TFQuestion.fromFirestore(
@@ -91,6 +117,47 @@ class TFQuestion {
   /// Converts this model into a [Map].
   /// Firestore works with [Map]s by default.
   Map<String, dynamic> toFirestore() {
+    return {
+      'id': id,
+      'questionNumber': questionNumber,
+      'question': question,
+      'answer': answer,
+      'startTimeSecond': startTimeSecond,
+      'startTimeMinute': startTimeMinute,
+      'endTimeSecond': endTimeSecond,
+      'endTimeMinute': endTimeMinute,
+    };
+  }
+
+  Map<String, dynamic> updatedUserData() {
+    return {
+      'id': id,
+      'questionNumber': questionNumber,
+      'question': question,
+      'answer': answer,
+      'startTimeSecond': startTimeSecond,
+      'startTimeMinute': startTimeMinute,
+      'endTimeSecond': endTimeSecond,
+      'endTimeMinute': endTimeMinute,
+    };
+  }
+
+  TFQuestion testFromFirestore(DocumentSnapshot<Map<String, dynamic>> snapshot,
+      SnapshotOptions? options) {
+    final data = snapshot.data();
+    return TFQuestion(
+      id: data?['id'],
+      questionNumber: data?['questionNumber'],
+      question: data?['question'],
+      answer: data?['answer'],
+      startTimeSecond: data?['startTimeSecond'],
+      startTimeMinute: data?['startTimeMinute'],
+      endTimeSecond: data?['endTimeSecond'],
+      endTimeMinute: data?['endTimeMinute'],
+    );
+  }
+
+  Map<String, dynamic> testToFirestore(TFQuestion user, SetOptions? options) {
     return {
       'id': id,
       'questionNumber': questionNumber,
