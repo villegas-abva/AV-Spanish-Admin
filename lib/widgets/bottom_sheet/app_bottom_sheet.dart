@@ -9,6 +9,7 @@ class AppBottomSheet extends StatelessWidget {
     this.percentageOfScreenHeight = 0.93,
     this.handlerWidth = 40,
     this.topBorderRadius = 25,
+    this.isLightTheme = true,
     super.key,
   });
 
@@ -16,13 +17,14 @@ class AppBottomSheet extends StatelessWidget {
   final double percentageOfScreenHeight;
   final double handlerWidth;
   final double topBorderRadius;
+  final bool isLightTheme;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * percentageOfScreenHeight,
       decoration: BoxDecoration(
-        color: Colors.black,
+        color: isLightTheme ? Colors.white : Colors.black,
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(topBorderRadius),
           topLeft: Radius.circular(topBorderRadius),
@@ -36,7 +38,7 @@ class AppBottomSheet extends StatelessWidget {
               padding: const EdgeInsets.only(top: 15),
               child: AppDivider(
                 thickness: 3,
-                color: Colors.white,
+                color: isLightTheme ? Colors.black : Colors.white,
                 width: handlerWidth,
               ),
             ),
