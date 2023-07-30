@@ -16,11 +16,11 @@ class AddQuizActionWidget extends StatelessWidget
           context,
           isDismissable: true,
           child: AddQuizBottomSheetBodyWidget(
-            navigateToAddTFQuizScreen: () async {
+            navigateToAddTFQuizScreen: () {
               // Navigator.pop(context);
               navigateToAddTFQuizScreen(context);
-              // Future.delayed(const Duration(milliseconds: 500))
-              //     .then((value) => navigateToAddTFQuizScreen(context));
+              // Future.delayed(const Duration(seconds: 2)).then(
+              //     (value) => Navigator.of(context, rootNavigator: false).pop());
             },
           ),
         );

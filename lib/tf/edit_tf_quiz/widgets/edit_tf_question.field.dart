@@ -68,7 +68,7 @@ class _EditTFQuestionFieldState extends State<EditTFQuestionField> {
                 Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: IconButton(
-                      icon: const Icon(Icons.expand),
+                      icon: const Icon(Icons.person),
                       onPressed: () {
                         setState(() {
                           isExpanded = !isExpanded;
