@@ -1,5 +1,5 @@
 import 'package:av_spanish_admin/tf/add_tf_quiz/add_true_false_quiz_screen.dart';
-import 'package:av_spanish_admin/widgets/custom_app_bar.dart';
+import 'package:av_spanish_admin/widgets/custom_app_bar/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class TFQuizScreenAppBar extends StatelessWidget {

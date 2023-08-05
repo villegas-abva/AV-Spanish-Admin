@@ -1,5 +1,5 @@
-import 'package:av_spanish_admin/home/widgets/home_screen_leading_widget.dart';
-import 'package:av_spanish_admin/widgets/add_quiz_icon.dart';
+import 'package:av_spanish_admin/widgets/custom_app_bar/custom_app_bar_trailing_widget.dart.dart';
+import 'package:av_spanish_admin/widgets/custom_app_bar/custom_app_bar_leading_widget.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -11,13 +11,15 @@ class CustomAppBar extends StatelessWidget {
 
   final void Function() navigateTo;
 
+  // TODO: customize for other leading and trailing widgets
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const HomeScreenLeadingWidget(),
-        AddQuizIcon(navigateTo: navigateTo),
+        const CustomAppBarLeadingWidget(),
+        CustomAppBarTrailingWidget(navigateTo: navigateTo),
       ],
     );
   }
