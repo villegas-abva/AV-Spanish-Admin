@@ -40,6 +40,9 @@ class AppText extends StatelessWidget {
   static TextStyle body2Style = appRegularText.copyWith(
     fontSize: 14,
   );
+  static TextStyle bodySmallStyle = appRegularText.copyWith(
+    fontSize: 12,
+  );
   static TextStyle button1Style = appRegularText.copyWith(
     fontSize: 17,
   );
@@ -68,6 +71,14 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
   })  : style = body2Style,
+        super(key: key);
+  AppText.bodySmall(
+    this.text, {
+    Key? key,
+    this.textAlign,
+    this.maxLines,
+    this.overflow,
+  })  : style = bodySmallStyle,
         super(key: key);
   AppText.button1(
     this.text, {
