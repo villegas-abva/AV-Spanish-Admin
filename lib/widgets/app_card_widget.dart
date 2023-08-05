@@ -5,12 +5,14 @@ class AppCardWidget extends StatelessWidget {
   const AppCardWidget({
     required this.children,
     this.borderRadius = 20,
+    this.color = Colors.white,
     super.key,
   });
   final double borderRadius;
   final List<Widget> children;
+  final Color color;
 
-  BorderRadius get bRadius => BorderRadius.circular(borderRadius);
+  BorderRadius get _radius => BorderRadius.circular(borderRadius);
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +20,13 @@ class AppCardWidget extends StatelessWidget {
     return Material(
       type: MaterialType.card,
       elevation: 4,
-      borderRadius: bRadius,
+      borderRadius: _radius,
       child: Container(
-        width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
-        decoration: BoxDecoration(borderRadius: bRadius),
+        decoration: BoxDecoration(
+          borderRadius: _radius,
+          color: color,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: children,
