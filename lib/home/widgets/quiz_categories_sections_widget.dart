@@ -33,7 +33,9 @@ class QuizCategoriesSectionWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const TrueFalseQuizzesScreen()),
+                        builder: (context) => TrueFalseQuizzesScreen(
+                              quizzes: tfQuizzes,
+                            )),
                   );
                 },
                 child: QuizCategoryWidget(

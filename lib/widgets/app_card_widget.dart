@@ -6,11 +6,13 @@ class AppCardWidget extends StatelessWidget {
     required this.children,
     this.borderRadius = 20,
     this.color = Colors.white,
+    this.padding = const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
     super.key,
   });
   final double borderRadius;
   final List<Widget> children;
   final Color color;
+  final EdgeInsetsGeometry padding;
 
   BorderRadius get _radius => BorderRadius.circular(borderRadius);
 
@@ -22,7 +24,7 @@ class AppCardWidget extends StatelessWidget {
       elevation: 4,
       borderRadius: _radius,
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+        padding: padding,
         decoration: BoxDecoration(
           borderRadius: _radius,
           color: color,
