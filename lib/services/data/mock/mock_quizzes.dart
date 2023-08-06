@@ -42,7 +42,7 @@ class MockQuizzes {
       numberOfQuestions: 3,
     ),
     TFQuiz(
-      title: 'El psicpata',
+      title: 'El psicopata',
       url: 'el-psicopata.com',
       id: 'id2',
       questions: [
