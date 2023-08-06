@@ -1,4 +1,5 @@
 import 'package:av_spanish_admin/home/widgets/quiz_categories_sections_widget.dart';
+import 'package:av_spanish_admin/services/data/mock/mock_quizzes.dart';
 import 'package:av_spanish_admin/tf/add_tf_quiz/add_tf_quiz_actions.dart';
 import 'package:av_spanish_admin/theme/theme.dart';
 import 'package:av_spanish_admin/widgets/bottom_sheet/app_bottom_sheet_actions.dart';
@@ -29,8 +30,9 @@ class _HomeScreenState extends State<HomeScreen>
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              QuizCategoriesSectionWidget(),
+            children: [
+              QuizCategoriesSectionWidget(
+                  tfQuizzes: MockQuizzes().mockTfQuizzesList),
             ],
           ),
         ),

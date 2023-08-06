@@ -1,12 +1,19 @@
 import 'package:av_spanish_admin/home/widgets/quiz_category_widget.dart';
 import 'package:av_spanish_admin/mc/mc_quizzes_screen.dart';
+import 'package:av_spanish_admin/services/models/tf/tf_quiz.dart';
 import 'package:av_spanish_admin/tf/true_false_quizzes_screen.dart';
 import 'package:av_spanish_admin/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class QuizCategoriesSectionWidget extends StatelessWidget {
   /// Displays a header and the [TrueFalse] and [MultipleChoice] categories inside [HomeScreen].
-  const QuizCategoriesSectionWidget({super.key});
+  const QuizCategoriesSectionWidget({
+    required this.tfQuizzes,
+    super.key,
+  });
+
+  final List<TFQuiz> tfQuizzes;
+// TODO: pass MC Quizzes once implemented
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +33,15 @@ class QuizCategoriesSectionWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const TrueFalseQuizzesScreen()),
+                        builder: (context) => TrueFalseQuizzesScreen(
+                              quizzes: tfQuizzes,
+                            )),
                   );
                 },
-                child: const QuizCategoryWidget(
+                child: QuizCategoryWidget(
                   category: 'True False',
                   // TODO: update this value from database
-                  numberOfQuizzes: 5,
+                  numberOfQuizzes: tfQuizzes.length,
                 ),
               ),
             ),
